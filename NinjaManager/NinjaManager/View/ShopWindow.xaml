@@ -1,0 +1,82 @@
+﻿<Window x:Class="NinjaManager.View.ShopWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NinjaManager.View"
+        mc:Ignorable="d"
+        Title="ShopWindow" MinHeight="450" MaxHeight="450" MinWidth="800" MaxWidth="800"
+        DataContext="{Binding Shop, Source={StaticResource Locator}}">
+    
+    <StackPanel>
+        <Grid>
+            <TextBlock HorizontalAlignment="Center" Text="Shop" FontSize="28" />
+            <Button Width="50" Height="50" FontSize="28" Content="+" 
+                        Foreground="White" FontWeight="Bold" Background="#FF44AE3F" 
+                        Grid.Column="3" HorizontalAlignment="Right"  Command="{Binding ShowAddItemCommand}">
+            </Button>
+        </Grid>
+        <Grid> 
+            <TextBlock HorizontalAlignment="left" Text="Gold" FontSize="28" />
+            <TextBlock HorizontalAlignment="Left" Text="{Binding SelectedNinja.GoldAmount, UpdateSourceTrigger=PropertyChanged}" FontSize="28" Margin="80,0,0,0"/>
+        </Grid>
+        <Grid>
+            <ListBox FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="2" MinHeight="300" MaxHeight="300">
+                <Button Width="165" Height="30" FontSize="14" Content="Head" 
+                        Foreground="Black" Background="White" 
+                        Command="{Binding HeadCommand}"/>
+                <Button Width="165" Height="30" FontSize="14" Content="Shoulders" 
+                        Foreground="Black" Background="White" 
+                        Command="{Binding ShoulderCommand}"/>
+                <Button Width="165" Height="30" FontSize="14" Content="Chest" 
+                        Foreground="Black" Background="White" 
+                        Command="{Binding ChestCommand}"/>
+                <Button Width="165" Height="30" FontSize="14" Content="Belt" 
+                        Foreground="Black" Background="White" 
+                        Command="{Binding BeltCommand}"/>
+                <Button Width="165" Height="30" FontSize="14" Content="Legs" 
+                        Foreground="Black" Background="White" 
+                        Command="{Binding LegsCommand}"/>
+                <Button Width="165" Height="30" FontSize="14" Content="Boots" 
+                        Foreground="Black" Background="White" 
+                        Command="{Binding BootsCommand}"/>
+            </ListBox>
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedEquipment, Mode=TwoWay}" ItemsSource="{Binding Equipment}" Margin="90,0,90,5" BorderBrush="#FF979494" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#FFF0E0E0" HeadersVisibility="Column" MinWidth="300" MaxWidth="300" MinHeight="300" MaxHeight="300">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Equipment name" Binding="{Binding EquipmentName}" Width="120" />
+                    <DataGridTextColumn Header="Price in gold" Binding="{Binding EquipmentPrice}" Width="75" />
+                    <DataGridTemplateColumn Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.EditItemCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    BorderThickness="0,0,0,1" BorderBrush="#FF999A9B" Foreground="White" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="30" Background="Orange">Edit</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.DeleteItemCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        BorderThickness="0,0,0,1" BorderBrush="#FF999A9B" Foreground="White" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="30" Background="Red">Delete</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ListBox FontSize="16" VerticalAlignment="Top"  HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="2" MinWidth="200" MaxWidth="200" MinHeight="300" MaxHeight="300">
+                <TextBlock Text="Item:" MinWidth="150" MaxWidth="150"/>
+                <TextBlock Text="{Binding SelectedEquipment.EquipmentName, UpdateSourceTrigger=PropertyChanged}" MinWidth="150" MaxWidth="150"/>
+                <TextBlock Text="Strength:" MinWidth="150" MaxWidth="150"/>
+                <TextBlock Text="{Binding SelectedEquipment.EquipmentStrength, UpdateSourceTrigger=PropertyChanged}" MinWidth="150" MaxWidth="150"/>
+                <TextBlock Text="Intelligence:" MinWidth="150" MaxWidth="150"/>
+                <TextBlock Text="{Binding SelectedEquipment.EquipmentIntel, UpdateSourceTrigger=PropertyChanged}" MinWidth="150" MaxWidth="150"/>
+                <TextBlock Text="Agility:" MinWidth="150" MaxWidth="150"/>
+                <TextBlock Text="{Binding SelectedEquipment.EquipmentAgility, UpdateSourceTrigger=PropertyChanged}" MinWidth="150" MaxWidth="150"/>
+                <Button MinWidth="100" MaxWidth="100" MinHeight="30" MaxHeight="30" FontSize="14" Content="Buy" HorizontalAlignment="Right"
+                        Foreground="Black" Background="White" 
+                        Command="{Binding BuyCommand}"/>
+
+            </ListBox>
+        </Grid>
+    </StackPanel>
+</Window>

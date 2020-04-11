@@ -1,0 +1,124 @@
+﻿<Window x:Class="NinjaManager.View.NinjaInventoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NinjaManager.View"
+        mc:Ignorable="d"
+        Title="NinjaInventoryWindow" MinHeight="720" MaxHeight="720" MinWidth="800" MaxWidth="800"
+        DataContext="{Binding NinjaInventory, Source={StaticResource Locator}}">
+
+    <StackPanel>
+        <Grid>
+            <TextBlock Text="{Binding SelectedNinja.Name}" FontSize="24" />
+            <TextBlock HorizontalAlignment="Center" Text="{Binding Path=SelectedNinja.GoldAmount, UpdateSourceTrigger=PropertyChanged}" FontSize="24" />
+            <Button Width="100" Height="50" FontSize="24" Content="Shop" 
+                        Foreground="White" FontWeight="Bold" Background="Blue" 
+                        VerticalAlignment="Center" HorizontalAlignment="Right" Command="{Binding ShowShopCommand}">
+            </Button>
+        </Grid>
+
+        <Border BorderBrush="Black" BorderThickness="2">
+            <Grid>
+                <Image Source="/Images/Ninja.png" Width="340" Height="530" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <ListBox FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="2" MinWidth="200" MaxWidth="200" MinHeight="175" MaxHeight="180">
+                    <TextBlock Text="Head" Margin="70,0,0,0" MinWidth="100" MaxWidth="100"/>
+                    <TextBlock Text= "{Binding HeadItem.EquipmentName}" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="Strength:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding HeadItem.EquipmentStrength}" Margin="70,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Intelligence:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding HeadItem.EquipmentIntel}" Margin="95,-25,0,0"  MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Agility: " MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding HeadItem.EquipmentAgility, UpdateSourceTrigger=PropertyChanged}" Margin="55,-25,0,0"  MinWidth="40" MaxWidth="40"/>
+                    <Button Width="165" Height="30" FontSize="14" Content="Sell" 
+                        Foreground="White" FontWeight="Bold" Background="Green" Margin="9,0,0,0"
+                        Command="{Binding SellHeadCommand}"/>
+                </ListBox>
+
+                <ListBox FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="2" MinWidth="200" MaxWidth="200" MinHeight="175" MaxHeight="180">
+                    <TextBlock Text="Chest" Margin="70,0,0,0" MinWidth="100" MaxWidth="100"/>
+                    <TextBlock Text="{Binding ChestItem.EquipmentName}" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="Strength:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding ChestItem.EquipmentStrength}" Margin="70,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Intelligence:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding ChestItem.EquipmentIntel}" Margin="95,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Agility: " MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding ChestItem.EquipmentAgility}" Margin="55,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <Button Width="165" Height="30" FontSize="14" Content="Sell" 
+                        Foreground="White" FontWeight="Bold" Background="Green" Margin="9,0,0,0"
+                        Command="{Binding SellChestCommand}"/>
+                </ListBox>
+
+                <ListBox FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="2" MinWidth="200" MaxWidth="200" MinHeight="175" MaxHeight="180">
+                    <TextBlock Text="Legs" Margin="70,0,0,0" MinWidth="100" MaxWidth="100"/>
+                    <TextBlock Text="{Binding LegsItem.EquipmentName}" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="Strength:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding LegsItem.EquipmentStrength}" Margin="70,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Intelligence:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding LegsItem.EquipmentIntel}" Margin="95,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Agility: " MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding LegsItem.EquipmentAgility}" Margin="55,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <Button Width="165" Height="30" FontSize="14" Content="Sell" 
+                        Foreground="White" FontWeight="Bold" Background="Green" Margin="9,0,0,0"
+                        Command="{Binding SellLegsCommand}"/>
+                </ListBox>
+
+                <ListBox FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="2" MinWidth="200" MaxWidth="200" MinHeight="175" MaxHeight="180">
+                    <TextBlock Text="Shoulder" Margin="70,0,0,0" MinWidth="100" MaxWidth="100"/>
+                    <TextBlock Text="{Binding ShoulderItem.EquipmentName}" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="Strength:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding ShoulderItem.EquipmentStrength}" Margin="70,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Intelligence:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding ShoulderItem.EquipmentIntel}" Margin="95,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Agility: " MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding ShoulderItem.EquipmentAgility}" Margin="55,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <Button Width="165" Height="30" FontSize="14" Content="Sell" 
+                        Foreground="White" FontWeight="Bold" Background="Green" Margin="9,0,0,0"
+                        Command="{Binding SellShouldersCommand}"/>
+                </ListBox>
+                <ListBox FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="2" MinWidth="200" MaxWidth="200" MinHeight="175" MaxHeight="180">
+                    <TextBlock Text="Belt" Margin="70,0,0,0" MinWidth="100" MaxWidth="100"/>
+                    <TextBlock Text="{Binding BeltItem.EquipmentName}" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="Strength:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding BeltItem.EquipmentStrength}" Margin="70,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Intelligence:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding BeltItem.EquipmentIntel}" Margin="95,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Agility: " MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding BeltItem.EquipmentAgility}" Margin="55,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <Button Width="165" Height="30" FontSize="14" Content="Sell" 
+                        Foreground="White" FontWeight="Bold" Background="Green" Margin="9,0,0,0"
+                        Command="{Binding SellBeltCommand}"/>
+                </ListBox>
+                <ListBox FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="2" MinWidth="200" MaxWidth="200" MinHeight="175" MaxHeight="180">
+                    <TextBlock Text="Boots" Margin="70,0,0,0" MinWidth="100" MaxWidth="100"/>
+                    <TextBlock Text="{Binding BootsItem.EquipmentName}" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="Strength:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding BootsItem.EquipmentStrength}" Margin="70,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Intelligence:" MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding BootsItem.EquipmentIntel}" Margin="95,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <TextBlock Text="Agility: " MinWidth="160" MaxWidth="160"/>
+                    <TextBlock Text="{Binding BootsItem.EquipmentAgility}" Margin="55,-25,0,0" MinWidth="40" MaxWidth="40"/>
+                    <Button Width="165" Height="30" FontSize="14" Content="Sell" 
+                        Foreground="White" FontWeight="Bold" Background="Green" Margin="9,0,0,0"
+                        Command="{Binding SellBootsCommand}"/>
+                </ListBox>
+            </Grid>
+        </Border>
+
+        <Grid>
+            <ListBox FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="left" BorderThickness="0">
+                <TextBlock Text="Total strength:" />
+                <TextBlock FontSize="16" Text="{Binding TotalStrength, UpdateSourceTrigger=PropertyChanged}"  Margin="130,-25,0,0"/>
+                <TextBlock Text="Total intelligence:" />
+                <TextBlock FontSize="16" Text="{Binding TotalIntel, UpdateSourceTrigger=PropertyChanged}"  Margin="130,-25,0,0"/>
+                <TextBlock Text="Total agility:" />
+                <TextBlock FontSize="16" Text="{Binding TotalAgility, UpdateSourceTrigger=PropertyChanged}"  Margin="130,-25,0,0"/>
+            </ListBox>
+            <ListBox FontSize="16" HorizontalAlignment="Center" BorderThickness="0">
+                <TextBlock FontSize="16" Text="Gear Value:"/>
+                <TextBlock FontSize="16" Text="{Binding TotalGold, UpdateSourceTrigger=PropertyChanged}"  Margin="90,-25,0,0"/>
+            </ListBox>
+        </Grid>
+    </StackPanel>
+
+</Window>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="NinjaManager.View.AddItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NinjaManager.View"
+        mc:Ignorable="d"
+        Title="AddItemWindow" MinHeight="400" MaxHeight="400" MinWidth="400" MaxWidth="400"
+        DataContext="{Binding AddItem, Source={StaticResource Locator}}">
+    <Border BorderThickness="12">
+        <StackPanel>
+
+            <TextBlock Text="Add new item" FontSize="28" />
+
+            <TextBlock Text="Item Id:" Margin="0,5,0,0"  />
+            <TextBox MaxLength="50" IsReadOnly="True" Text="{Binding Item.EquipmentId}" />
+            <TextBlock Text="Name:" Margin="0,5,0,0"  />
+            <TextBox MaxLength="50" Text="{Binding Path=Item.EquipmentName, Mode=TwoWay}" />
+            <TextBlock Text="Price:" Margin="0,5,0,0"  />
+            <TextBox MaxLength="50" Text="{Binding Path=Item.EquipmentPrice, Mode=TwoWay}" />
+            <TextBlock Text="Category:" Margin="0,5,0,0"  />
+            <TextBox MaxLength="50" Text="{Binding Path=Item.EquipmentCategory, Mode=TwoWay}" />
+            <TextBlock Text="Strength amount:" Margin="0,5,0,0"  />
+            <TextBox MaxLength="50" Text="{Binding Path=Item.EquipmentStrength, Mode=TwoWay}" />
+            <TextBlock Text="Intelligence amount:" Margin="0,5,0,0"  />
+            <TextBox MaxLength="50" Text="{Binding Path=Item.EquipmentIntel, Mode=TwoWay}" />
+            <TextBlock Text="Agility amount:" Margin="0,5,0,0"  />
+            <TextBox MaxLength="50" Text="{Binding Path=Item.EquipmentAgility, Mode=TwoWay}" />
+
+            <Button Content="Add" Command="{Binding AddItemCommand}" CommandParameter="{Binding AddItemCommand}"
+                    Width="100"  HorizontalAlignment="Left" Margin="0,5,0,0" />
+
+        </StackPanel>
+    </Border>
+</Window>
